@@ -52,7 +52,30 @@ public class menuBar extends Application {
         CheckMenuItem gridItem = new CheckMenuItem("Use GridLines");
         MenuItem copyItem = new MenuItem("Copy");
         editMenu.getItems().addAll(gridItem, new SeparatorMenuItem(), copyItem, searchMenu);
-
+        //add actions for menu items
+        newItem.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                closeItem.setDisable(false);
+                newItem.setDisable(true);
+                openItem.setDisable(true);
+                System.out.println("NEW has been pressed");
+            }
+        });
+        openItem.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                closeItem.setDisable(false);
+                openItem.setDisable(true);
+                newItem.setDisable(true);
+                System.out.println("OPEN has been pressed");
+            }
+        });
+        closeItem.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                openItem.setDisable(false); newItem.setDisable(false);
+                closeItem.setDisable(true);
+                System.out.println("CLOSE has been pressed");
+            }
+        });
         stage.setTitle("Menu Example!");
         stage.setScene(scene);
         stage.show();
